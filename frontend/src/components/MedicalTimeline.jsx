@@ -74,14 +74,12 @@ const MedicalTimeline = () => {
               </div>
               
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1.5rem' }}>
-                {record.riskClassification && record.riskClassification !== "Unknown Risk" && (
-                  <div style={{ gridColumn: '1 / -1', marginBottom: '0.5rem', background: 'rgba(0,0,0,0.3)', padding: '1rem', borderRadius: '12px', borderLeft: '4px solid var(--neon-secondary)' }}>
-                    <div style={{ fontSize: '0.8rem', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '1px' }}>🧠 AI Medical Prediction</div>
-                    <div style={{ fontSize: '1.3rem', color: record.riskClassification.includes('High') ? '#ef4444' : 'var(--neon-primary)', fontWeight: 'bold' }}>
-                      {record.riskClassification}
-                    </div>
+                <div style={{ gridColumn: '1 / -1', marginBottom: '0.5rem', background: 'rgba(0,0,0,0.3)', padding: '1rem', borderRadius: '12px', borderLeft: '4px solid var(--neon-secondary)' }}>
+                  <div style={{ fontSize: '0.8rem', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '1px' }}>🧠 AI Medical Prediction</div>
+                  <div style={{ fontSize: '1.3rem', color: (record.riskClassification || "Unknown Risk").includes('High') ? '#ef4444' : 'var(--neon-primary)', fontWeight: 'bold' }}>
+                    {record.riskClassification || "Unknown Risk"}
                   </div>
-                )}
+                </div>
                 {record.sleepDuration && <div><div style={{ fontSize: '0.8rem', color: '#94A3B8' }}>Sleep Duration</div><div>{record.sleepDuration} hrs</div></div>}
                 {record.qualityOfSleep && <div><div style={{ fontSize: '0.8rem', color: '#94A3B8' }}>Quality of Sleep</div><div>{record.qualityOfSleep}</div></div>}
                 {record.physicalActivityLevel && <div><div style={{ fontSize: '0.8rem', color: '#94A3B8' }}>Activity Level</div><div>{record.physicalActivityLevel}</div></div>}
